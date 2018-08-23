@@ -12,13 +12,21 @@ function draw() {
   fish.show();
   fish.update();
 
-  if (frameCount % 40 == 0) {
+  if (frameCount % 50 == 0) {
     corals.push(new Coral());
   }
 
-  for (var i = 0; i < corals.length; i++) {
+  for (var i = corals.length - 1; i >= 0; i--) {
     corals[i].show();
     corals[i].update();
+
+    // if (corals[i].hits(fish)) {
+
+    // }
+
+    if (corals[i].offscreen()) {
+      corals.splice(i, 1);
+    }
   }
 }
 
