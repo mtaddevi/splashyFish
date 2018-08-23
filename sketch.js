@@ -12,7 +12,7 @@ function draw() {
   fish.show();
   fish.update();
 
-  if (frameCount % 80 == 0) {
+  if (frameCount % 40 == 0) {
     corals.push(new Coral());
   }
 
@@ -25,6 +25,6 @@ function draw() {
 function keyPressed() {
   if (key == " ") {
     console.log("SPACE");
-    fish.left();
+    fish.leftForce();
   }
 }

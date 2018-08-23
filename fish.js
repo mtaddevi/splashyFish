@@ -1,36 +1,37 @@
 function Fish() {
-  this.x = width / 2;
-  this.y = 25;
+  this.y = height / 2;
+  this.x = 64;
   //350
+  //25 top
 
-  this.gravity = 0.2;
-  this.velocity = 1;
-  this.leftForce = 100;
+  this.gravity = 0.9;
+  this.velocity = 0;
+  this.leftForce = -15;
 
   this.show = function() {
     fill(255, 127, 101);
     ellipse(this.x, this.y, 30, 30);
   };
-  //believe were not hitting this
-  this.left = function() {
-    this.velocity += this.leftForce;
-    this.velocity *= 150;
+
+  this.leftForce = function() {
+    this.velocity += -this.gravity * 10;
+    this.velocity *= 0.9;
     print(this.velocity);
   };
 
   this.update = function() {
     this.velocity += this.gravity;
-    this.x -= this.velocity;
+    this.y += this.velocity;
 
     //right side boundary
-    if (this.x > width) {
-      this.x = width;
+    if (this.y > height) {
+      this.y = height;
       this.velocity = 0;
     }
 
     //left side boundary
-    if (this.x < width) {
-      this.x = width;
+    if (this.y < 0) {
+      this.y = 0;
       this.velocity = 0;
     }
   };
