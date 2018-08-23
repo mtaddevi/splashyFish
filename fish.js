@@ -1,6 +1,7 @@
 function Fish() {
-  this.y = height / 2;
-  this.x = 64;
+  this.y = height / 8;
+  //height-24 gives desirable bottom spawn
+  this.x = width / 2;
   //350
   //25 top
 
@@ -16,22 +17,23 @@ function Fish() {
   this.leftForce = function() {
     this.velocity += -this.gravity * 10;
     this.velocity *= 0.9;
+    //this.x += this.velocity;
     print(this.velocity);
   };
 
   this.update = function() {
     this.velocity += this.gravity;
-    this.y += this.velocity;
+    this.x += this.velocity;
 
     //right side boundary
-    if (this.y > height) {
-      this.y = height;
+    if (this.x > width) {
+      this.x = width;
       this.velocity = 0;
     }
 
     //left side boundary
-    if (this.y < 0) {
-      this.y = 0;
+    if (this.x < 0) {
+      this.x = 0;
       this.velocity = 0;
     }
   };
